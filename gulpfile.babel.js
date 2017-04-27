@@ -27,17 +27,17 @@ const jsPath = {
 
 // JS WebPack Task Generator
 let jsWebpackTaskGen = function (mode) {
-    let isProd = mode === 'prod',
-        doWatch = mode === 'watch',
-        output = jsPath[isProd ? 'prod' : 'dev'],
-        plugins = isProd ?
-            [
-                new webpack.DefinePlugin({'process.env': {'NODE_ENV': JSON.stringify('production')}}),
-                new webpack.optimize.UglifyJsPlugin({output: {comments: false}, sourceMap: false})
-            ] :
-            [
-                new webpack.DefinePlugin({'process.env': {'NODE_ENV': JSON.stringify('development')}}),
-            ];
+    let isProd = mode === 'prod';
+    let doWatch = mode === 'watch';
+    let output = jsPath[isProd ? 'prod' : 'dev'];
+    let plugins = isProd ?
+        [
+            new webpack.DefinePlugin({'process.env': {'NODE_ENV': JSON.stringify('production')}}),
+            new webpack.optimize.UglifyJsPlugin({output: {comments: false}, sourceMap: false})
+        ] :
+        [
+            new webpack.DefinePlugin({'process.env': {'NODE_ENV': JSON.stringify('development')}}),
+        ];
 
     return () => {
         // run webpack
@@ -84,3 +84,5 @@ let jsWebpackTaskGen = function (mode) {
 gulp.task('js-wp-dev', jsWebpackTaskGen('dev'));
 gulp.task('js-wp-prod', jsWebpackTaskGen('prod'));
 gulp.task('js-wp-watch', jsWebpackTaskGen('watch'));
+
+

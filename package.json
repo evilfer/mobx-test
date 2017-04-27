@@ -28,5 +28,8 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "webpack": "^2.4.1"
+  },
+  "devDependencies": {
+    "mobx-react-devtools": "^4.2.11"
   }
 }
